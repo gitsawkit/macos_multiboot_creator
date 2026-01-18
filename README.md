@@ -1,5 +1,6 @@
 # 🍎 macOS Multiboot Creator
 [![License: MIT](https://img.shields.io/badge/license-MIT-darkgreen.svg)](https://opensource.org/licenses/MIT)
+[![CodeFactor](https://www.codefactor.io/repository/github/gitsawkit/macos_multiboot_creator/badge)](https://www.codefactor.io/repository/github/gitsawkit/macos_multiboot_creator)
 [![Python](https://img.shields.io/badge/Python-3.6%2B-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![macOS](https://img.shields.io/badge/platform-macOS-white.svg?style=flat&logo=apple&logoColor=white)](https://www.apple.com/macos/)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
