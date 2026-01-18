@@ -34,7 +34,7 @@ def list_external_disks() -> List[Tuple[str, str]]:
     """
     logger.info("Recherche des disques externes...")
     try:
-        output = run_command(["diskutil", "list", "-plist"])
+        output = run_command([DISKUTIL_PATH, "list", "-plist"])
         data = parse_plist(output)
     except (CommandError, CommandNotFoundError, PlistParseError) as e:
         logger.error(f"Erreur lors de la recherche des disques: {e}")
@@ -60,7 +60,7 @@ def list_external_disks() -> List[Tuple[str, str]]:
         is_mounted = bool(disk.get("MountPoint"))
 
         try:
-            info_xml = run_command(["diskutil", "info", "-plist", dev_id])
+            info_xml = run_command([DISKUTIL_PATH, "info", "-plist", dev_id])
             if not info_xml:
                 continue
             info = parse_plist(info_xml)
@@ -138,7 +138,7 @@ def get_disk_info(target_disk: str) -> Dict[str, Any]:
         CommandNotFoundError: Si diskutil n'est pas trouvé
         PlistParseError: Si le parsing du plist échoue
     """
-    disk_info_xml = run_command(["diskutil", "info", "-plist", target_disk])
+    disk_info_xml = run_command([DISKUTIL_PATH, "info", "-plist", target_disk])
     return parse_plist(disk_info_xml)
 
 
