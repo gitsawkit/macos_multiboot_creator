@@ -8,7 +8,7 @@ Internationalisation (FR/EN) du projet.
 
 from __future__ import annotations
 
-import locale
+import os
 from typing import Any, Dict, Optional
 
 Language = str  # "fr" | "en"
@@ -18,39 +18,16 @@ _CURRENT_LANG: Language = "en"
 
 def detect_system_language() -> Language:
     """
-    Détecte la langue système.
-    - Si fr -> "fr"
-    - Si en -> "en"
-    - Sinon -> "en"
+    Détecte la langue système via les variables d'environnement
     """
-    candidates = []
-    try:
-        lang, _enc = locale.getlocale(locale.LC_MESSAGES)
+    for env_var in ("LC_ALL", "LC_MESSAGE", "LANG"):
+        lang = os.environ.get(env_var)
         if lang:
-            candidates.append(lang)
-    except Exception:
-        pass
-
-    try:
-        lang, _enc = locale.getdefaultlocale()  # type: ignore[attr-defined]
-        if lang:
-            candidates.append(lang)
-    except Exception:
-        pass
-
-    try:
-        lang = locale.getlocale()[0]
-        if lang:
-            candidates.append(lang)
-    except Exception:
-        pass
-
-    for cand in candidates:
-        lc = cand.lower()
-        if lc.startswith("fr"):
-            return "fr"
-        if lc.startswith("en"):
-            return "en"
+            lang = lang.lower()
+            if lang.startswith("fr"):
+                return "fr"
+            if lang.startswith("en"):
+                return "en"
     return "en"
 
 
