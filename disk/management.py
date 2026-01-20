@@ -53,9 +53,7 @@ def unmount_disk(target_disk: str, force: bool = False) -> None:
     """
     logger.info(t("disk.unmount", target_disk=target_disk))
     try:
-        output = run_command([DISKUTIL_PATH, "unmountDisk", target_disk], capture=True)
-        if output:
-            logger.info(output)
+        run_command([DISKUTIL_PATH, "unmountDisk", target_disk], capture=True)
         logger.info(t("disk.unmount_success", target_disk=target_disk))
     except CommandError as e:
         error_msg = ""

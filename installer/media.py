@@ -126,15 +126,6 @@ def _verify_by_volume_size(vol_path: Path, items: List[str]) -> bool:
         min_size_mb = MIN_VOLUME_SIZE_BYTES / (1024 * 1024)
         actual_size_mb = total_size / (1024 * 1024)
 
-        logger.error(
-            t(
-                "install_media.volume_too_small",
-                size_mb=actual_size_mb,
-                min_mb=min_size_mb,
-            )
-            + " "
-            + t("install_media.files_present", items=items)
-        )
         print(
             t(
                 "install_media.volume_too_small",
@@ -149,8 +140,8 @@ def _verify_by_volume_size(vol_path: Path, items: List[str]) -> bool:
         t(
             "install_media.volume_standard_warning",
             vol_path=vol_path,
-            total_size=total_size,
-            items=items,
+            total_size=total_size / (1024 * 1024),
+            items=items[:5],
         )
     )
     return True
@@ -301,7 +292,6 @@ def _prepare_volume(inst: InstallerInfo) -> Path:
 
     try:
         vol_path = find_volume_path(inst["volume"], inst["name"])
-        logger.info(t("install_media.volume_found", vol_path=vol_path))
     except FileNotFoundError:
         error_msg = t("install_media.volume_not_found", expected=inst["volume"])
         print(t("install_media.error_for_installer", msg=error_msg, name=inst["name"]))
@@ -335,7 +325,7 @@ def _execute_createinstallmedia(
         "--nointeraction",
     ]
 
-    logger.info(t("install_media.tool_executable", {inst["name"]}))
+    logger.info(t("install_media.tool_executable", name={inst["name"]}))
 
     progress_rules = [
         ("erasing", 5, t("progress.erasing_volume")),

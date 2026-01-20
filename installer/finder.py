@@ -136,10 +136,6 @@ def calculate_total_space_needed(installers: List[InstallerInfo]) -> int:
         calculate_size_with_margin(inst["size_bytes"]) for inst in installers
     )
     logger.info(
-        t(
-            "installer.space_needed",
-            total_needed_bytes=total_needed_bytes,
-            BYTES_PER_GB=BYTES_PER_GB,
-        )
+        t("installer.space_needed", total_space=total_needed_bytes / BYTES_PER_GB)
     )
     return total_needed_bytes

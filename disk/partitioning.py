@@ -43,13 +43,6 @@ def validate_partition_sizes(target_disk: str, installers: List[InstallerInfo]) 
         total_needed_gb = total_needed_bytes / BYTES_PER_GB
 
         if total_needed_bytes > disk_size_bytes:
-            logger.error(
-                t(
-                    "disk.partition_fail_size_large",
-                    total_needed_gb=total_needed_gb,
-                    disk_size_gb=disk_size_gb,
-                )
-            )
             raise ValueError(
                 t(
                     "disk.partition_fail_size_large",
