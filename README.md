@@ -7,9 +7,9 @@
 [![Downloads](https://img.shields.io/github/downloads/gitsawkit/macos_multiboot_creator/total?style=flat&logo=download&logoColor=green&color=24292f)](https://github.com/gitsawkit/macos_multiboot_creator/releases)
 [![GitHub stars](https://img.shields.io/github/stars/gitsawkit/macos_multiboot_creator?style=social)](https://github.com/gitsawkit/macos_multiboot_creator)
 
-**🇺🇸 Automated Python tool to create a multiboot USB drive for multiple macOS versions on a single external disk.**
+**🇺🇸 Automated tool to create a multiboot USB drive for multiple macOS versions on a single external disk.**
 
-**🇫🇷 Outil Python pour créer une clé USB multiboot permettant d'installer plusieurs versions de macOS sur un seul disque externe.**
+**🇫🇷 Outil pour créer une clé USB multiboot permettant d'installer plusieurs versions de macOS sur un seul disque externe.**
 
 **[🇺🇸 English](#english) | [🇫🇷 Français](#français)**
 
